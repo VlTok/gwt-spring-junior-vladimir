@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="gwt-spring-test-vladimir:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>gwt-spring-test-vladimir</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="gwt-spring-test-vladimir-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="gwt-spring-test-vladimir:war exploded" />
+    </root>
+  </artifact>
+</component>

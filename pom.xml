@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.tokmeninov</groupId>
+    <artifactId>gwt-spring-test-vladimir</artifactId>
+    <packaging>war</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Maven Archetype for GWT</name>
+
+    <properties>
+        <!-- Convenience property to set the GWT version -->
+        <gwt.version>2.8.1</gwt.version>
+        <version.spring>4.3.18.RELEASE</version.spring>
+        <version.spring-data-jpa>1.11.13.RELEASE</version.spring-data-jpa>
+        <version.hibernate>5.1.15.Final</version.hibernate>
+        <version.slf4j>1.7.25</version.slf4j>
+        <version.logback>1.2.3</version.logback>
+
+        <!-- GWT 2.8 requires 1.8 -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>gwt-sl-mvn-repo</id>
+            <url>https://raw.github.com/ggeorgovassilis/gwt-sl/mvn-repo/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.google.gwt</groupId>
+                <artifactId>gwt</artifactId>
+                <version>${gwt.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--      <dependency>-->
+            <!--        <groupId>com.google.gwt</groupId>-->
+            <!--        <artifactId>gwt</artifactId>-->
+            <!--        <version>${gwt.version}</version>-->
+            <!--        <type>pom</type>-->
+            <!--        <scope>import</scope>-->
+            <!--      </dependency>-->
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-servlet</artifactId>
+            <version>${gwt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+            <version>${gwt.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <version>${gwt.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.gwt-widget</groupId>
+            <artifactId>gwt-sl</artifactId>
+            <version>1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>1.8.0.10</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
+        </dependency>
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${version.slf4j}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${version.slf4j}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${version.logback}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${version.logback}</version>
+        </dependency>
+        <!--    <dependency>-->
+        <!--      <groupId>javax.servlet</groupId>-->
+        <!--      <artifactId>javax.servlet-api</artifactId>-->
+        <!--      <version>3.1.0</version>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.codehaus.jackson</groupId>-->
+        <!--      <artifactId>jackson-mapper-asl</artifactId>-->
+        <!--      <version>1.9.13</version>-->
+        <!--    </dependency>-->
+
+
+        <!--    <dependency>-->
+        <!--      <groupId>org.springframework</groupId>-->
+        <!--      <artifactId>spring-test</artifactId>-->
+        <!--      <version>5.3.3</version>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.springframework.security</groupId>-->
+        <!--      <artifactId>spring-security-config</artifactId>-->
+        <!--      <version>${version.spring}</version>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.springframework.security</groupId>-->
+        <!--      <artifactId>spring-security-core</artifactId>-->
+        <!--      <version>5.4.2</version>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.springframework.security</groupId>-->
+        <!--      <artifactId>spring-security-web</artifactId>-->
+        <!--      <version>5.4.2</version>-->
+        <!--    </dependency>-->
+        <!--<dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-web</artifactId>
+          <version>${version.spring}</version>
+        </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>javax.servlet</groupId>-->
+        <!--      <artifactId>javax.servlet-api</artifactId>-->
+        <!--      <version>3.1.0</version>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.codehaus.jackson</groupId>-->
+        <!--      <artifactId>jackson-mapper-asl</artifactId>-->
+        <!--      <version>1.9.13</version>-->
+        <!--    </dependency>-->
+
+
+        <!--    <dependency>-->
+        <!--      <groupId>org.springframework</groupId>-->
+        <!--      <artifactId>spring-test</artifactId>-->
+        <!--      <version>5.3.3</version>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.springframework.security</groupId>-->
+        <!--      <artifactId>spring-security-config</artifactId>-->
+        <!--      <version>${version.spring}</version>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.springframework.security</groupId>-->
+        <!--      <artifactId>spring-security-core</artifactId>-->
+        <!--      <version>5.4.2</version>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.springframework.security</groupId>-->
+        <!--      <artifactId>spring-security-web</artifactId>-->
+        <!--      <version>5.4.2</version>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.springframework</groupId>-->
+        <!--      <artifactId>spring-web</artifactId>-->
+        <!--      <version>${version.spring}</version>-->
+        <!--    </dependency>-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${version.spring}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${version.spring}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${version.spring}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${version.spring-data-jpa}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${version.hibernate}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${version.hibernate}</version>
+        </dependency>
+        <!--    <dependency>-->
+        <!--      <groupId>org.springframework</groupId>-->
+        <!--      <artifactId>spring-jdbc</artifactId>-->
+        <!--      <version>5.3.3</version>-->
+        <!--    </dependency>-->
+        <!--      <groupId>org.springframework</groupId>-->
+        <!--      <artifactId>spring-core</artifactId>-->
+        <!--      <version>5.3.3</version>-->
+        <!--    </dependency>-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${version.spring}</version>
+        </dependency>
+
+        <!--    <dependency>-->
+        <!--      <groupId>org.slf4j</groupId>-->
+        <!--      <artifactId>slf4j-log4j12</artifactId>-->
+        <!--      <version>1.7.21</version>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.postgresql</groupId>-->
+        <!--      <artifactId>postgresql</artifactId>-->
+        <!--      <version>42.2.19</version>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.mockito</groupId>-->
+        <!--      <artifactId>mockito-all</artifactId>-->
+        <!--      <version>1.10.19</version>-->
+        <!--      <scope>test</scope>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>junit</groupId>-->
+        <!--      <artifactId>junit</artifactId>-->
+        <!--      <version>4.11</version>-->
+        <!--      <scope>test</scope>-->
+        <!--    </dependency>-->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.19</version>
+        </dependency>
+        <!--<dependency>
+          <groupId>org.springframework.data</groupId>
+          <artifactId>spring-data-jpa</artifactId>
+          <version>${version.spring-data-jpa}</version>
+        </dependency>-->
+        <!--<dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-core</artifactId>
+          <version>${version.hibernate}</version>
+        </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.springframework</groupId>-->
+        <!--      <artifactId>spring-jdbc</artifactId>-->
+        <!--      <version>5.3.3</version>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.springframework</groupId>-->
+        <!--      <artifactId>spring-core</artifactId>-->
+        <!--      <version>5.3.3</version>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.springframework</groupId>-->
+        <!--      <artifactId>spring-beans</artifactId>-->
+        <!--      <version>5.3.3</version>-->
+        <!--    </dependency>-->
+
+        <!--    <dependency>-->
+        <!--      <groupId>org.slf4j</groupId>-->
+        <!--      <artifactId>slf4j-log4j12</artifactId>-->
+        <!--      <version>1.7.21</version>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.postgresql</groupId>-->
+        <!--      <artifactId>postgresql</artifactId>-->
+        <!--      <version>42.2.19</version>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.mockito</groupId>-->
+        <!--      <artifactId>mockito-all</artifactId>-->
+        <!--      <version>1.10.19</version>-->
+        <!--      <scope>test</scope>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>junit</groupId>-->
+        <!--      <artifactId>junit</artifactId>-->
+        <!--      <version>4.11</version>-->
+        <!--      <scope>test</scope>-->
+        <!--    </dependency>-->
+    </dependencies>
+
+    <build>
+        <!-- Output classes directly into the webapp, so that IDEs and "mvn process-classes" update them in DevMode -->
+        <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
+
+        <plugins>
+
+            <!-- Mojo's Maven Plugin for GWT -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <version>2.8.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>test</goal>
+                            <goal>generateAsync</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <!-- Plugin configuration. There are many available options, see
+                  gwt-maven-plugin documentation at codehaus.org -->
+                <configuration>
+                    <runTarget>GwtWebApp.html</runTarget>
+                    <modules>
+                        <module>com.tokmeninov.gwt.GwtWebApp</module>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
